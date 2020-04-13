@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<title>登录首页</title>
+		<link href="../../static/css/style.css" th:href="@{/css/style.css}" rel="stylesheet" />
+	</head>
+	<body>
+		<form class="box" action="#" th:action="@{/admin/login}" method="post">
+			<h1 th:text="#{login.tip}">博客管理</h1>
+			<input value="" name="username" type="text" th:placeholder="#{login.username}" placeholder="Username" />
+			<input value="" name="password" type="password" th:placeholder="#{login.password}" placeholder="Password" />
+			<button th:text="#{login.btn}">login</button>
+			<p class="animated fadeInUpBig" th:text="${msg}" th:if="${not #strings.isEmpty(msg)}">用户名面膜错误</p>
+			<a href="#" th:href="@{/admin(l='en_US')}">English</a>
+			<a href="#" th:href="@{/admin(l='zh_CN')}">中文</a>
+		</form>
+	</body>
+<!--/*/<th:block th:replace="admin/_fragments :: script">/*/-->
+
+<!--/*/</th:block>/*/-->
+</html>
