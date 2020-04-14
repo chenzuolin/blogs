@@ -19,3 +19,12 @@
   - **配置文件**：com.blog.config
   - **类名约定**：驼峰命名规则
 
+### 三、环境
+
+- **Springboot-2.2.0**
+- **模板引擎：Thymeleaf-3.0**
+- **前端：Semantic UI** 
+- **数据库：MySQL**
+- **SpringData**
+- **日志：slf2**
+- **数据源：Druid**
