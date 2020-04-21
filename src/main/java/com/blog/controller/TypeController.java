@@ -2,6 +2,8 @@ package com.blog.controller;
 
 import com.blog.domain.Type;
 import com.blog.service.TypeService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -22,12 +24,15 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @RequestMapping("/admin")
 public class TypeController {
 
+    private Logger logger = LoggerFactory.getLogger(this.getClass());
+
     @Autowired
     TypeService typeService;
 
     @GetMapping("/types")
     public String types(@PageableDefault(size = 3,sort = {"id"},direction = Sort.Direction.DESC) Pageable pageable,
                         Model model){
+        logger.info("===============>"+typeService.listType(pageable).toString()+"<==================");
         model.addAttribute("page",typeService.listType(pageable));
         return "admin/types";
     }
@@ -39,6 +44,7 @@ public class TypeController {
 
     @PostMapping("/types")
     public String postType(Type type, RedirectAttributes redirectAttributes){
+        logger.info("++++++++++++++++++++++++++++++++++++++++002");
         Type byName = typeService.findByName(type.getName());
         if(!StringUtils.isEmpty(byName)){
             redirectAttributes.addFlashAttribute("msg","该名称已被占用！！！");
@@ -62,6 +68,7 @@ public class TypeController {
     @PostMapping("/types/{id}")
     public String editType(Type type,@PathVariable Long id,RedirectAttributes redirectAttributes){
         Type byName = typeService.findByName(type.getName());
+        logger.info("++++++++++++++++++++++++++++++++++++++++++++++++++++001");
         if(!StringUtils.isEmpty(byName)){
             redirectAttributes.addFlashAttribute("msg","该名称已被占用！！！");
             return "redirect:/admin/types";

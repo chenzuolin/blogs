@@ -19,7 +19,7 @@ public class Tag implements Serializable {
      */
     @Id
     @GeneratedValue
-    private Integer id;
+    private Long id;
     /**
      * 标签名称
      */
@@ -34,11 +34,11 @@ public class Tag implements Serializable {
         return serialVersionUID;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

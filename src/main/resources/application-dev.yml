@@ -4,12 +4,22 @@ spring:
     url: jdbc:mysql://localhost:3306/blog?serverTimezone=UTC
     username: root
     password: 123456
+
   jpa:
     hibernate:
       ddl-auto: update
     show-sql: true
+
   messages:
     basename: i18n.login
+
+  thymeleaf:
+    cache: false
+    prefix: classpath:/templates/
+    suffix: .html
+    servlet:
+      content-type: text/html
+
 logging:
   level:
     root: info
